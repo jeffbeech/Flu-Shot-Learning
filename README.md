@@ -16,6 +16,8 @@ For this project, the README.md file should contain:
 - [ ] Conclusion
 
 ![cdc](cdc.jpeg)
+![flu vaccone](2018FLUVaccine.jpeg)
+![flu vaccine bottle](acip-flu-recs800.jpeg)
 
 ## Overview
 Although most people today associate the coronavirus with a pandemic, just over a decade ago another contagion raced around the globe. During the spring of 2009, a novel strain of influenza A emerged. This new type of H1N1 virus, commonly referred to as "swine flu," affected 60 million people worldwide and caused between 151,000-575,400 deaths in the first year of its appearance. Unlike the seasonal flu, H1N1 primarily sickened young people owing to the presence of familiar H1N1 antibodies in older individuals who had been exposed to a similar pathogen earlier in their lives. A vaccine to this novel H1N1 virus was developed that fall, but it was too late to be included in the seasonal flu vaccine for that year. This necessitated receiving 2 different flu vaccines for the flu season of 2009-10, especially for those considered highest at risk.
