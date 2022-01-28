@@ -36,7 +36,11 @@ Since we are running both logistic regression and tree-based models, we'll have 
 
 ### Logistic Regression
 
-Our modeling strategy began with a basic logistic regression to establish a baseline. We did a train-test split, and preprocessed the data by imputing the missing values with the mode, since most categories, including the numeric ones, are categorical.  The we one-hot encoded the non-numeric columns, and scaled the numeric columns.
+Our modeling strategy began with a basic logistic regression to establish a baseline. We did a train-test split, and preprocessed the data by imputing the missing values with the mode, since most categories, including the numeric ones, are categorical.  The we one-hot encoded the non-numeric columns, and scaled the numeric columns.  Since we are examing bo the seasonal and H1N1 flu strains, we are making seperate predictions for both models, and averaging the result.  Our baseline precision score was 
+
+# Before we do the models...Refactor into a pipeline
+
+Now that we've got a basic and working but still fairly rough model with our cleaning steps mostly sorted out, we'll build a pipeline. We'll also code some of our graphing and scoring steps as a function so we can easily spit out several metrics for each model.  We'll also first redo our train-test split with with stratify because the H1N1-vaccinated class is slightly imbalanced. It likely won't be a drastic improvement, but we may be able to squeeze a small amount of extra juice out of any models going forward.
 
 
 
