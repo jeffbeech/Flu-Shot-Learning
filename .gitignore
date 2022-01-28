@@ -4,5 +4,3 @@ __pycache__
 *.db
 *.pytest_cache
 graphs
-data/
-ssnl_dependency.csv
