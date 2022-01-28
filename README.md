@@ -1,58 +1,69 @@
-# Project Title Here
+# Boosting Vaccination Rates
 
-README.md includes concise summary of project with all data science steps
+*** add link to presentation
 
-README.md links to presentation and sources
+*** check structure of respitory
 
-README.md includes instructions for navigating the repository
+*** instructions for navigating the repository(?)
 
-For this project, the README.md file should contain:
+*** add graphs from best models
 
-- [ ] Overview
-- [ ] Business and Data Understanding
-- [ ] Explain your stakeholder audience and dataset choice here
-- [ ] Modeling
-- [ ] Evaluation
-- [ ] Conclusion
+![flu vaccine bottle](2018FLUVaccine.jpeg)
 
-![cdc](cdc.jpeg)
-![flu vaccone](2018FLUVaccine.jpeg)
-![flu vaccine bottle](acip-flu-recs800.jpeg)
-
-## Business and Data Understanding
-Although most people today associate the coronavirus with a pandemic, just over a decade ago another contagion raced around the globe. During the spring of 2009, a novel strain of influenza A emerged. This new type of H1N1 virus, commonly referred to as "swine flu," affected 60 million people worldwide and caused between 151,000-575,400 deaths in the first year of its appearance. Unlike the seasonal flu, H1N1 primarily sickened young people owing to the presence of familiar H1N1 antibodies in older individuals who had been exposed to a similar pathogen earlier in their lives. A vaccine to this novel H1N1 virus was developed that fall, but it was too late to be included in the seasonal flu vaccine for that year. This necessitated receiving 2 different flu vaccines for the flu season of 2009-10, especially for those considered highest at risk.
+## Overview and Business Understanding
+During the spring of 2009, a new contagion raced around the world. This novel strain of influenza A (a new type of H1N1 virus) affected 60 million people worldwide and [caused between 151,000-575,400 deaths](https://www.cdc.gov/flu/pandemic-resources/2009-h1n1-pandemic.html) in the first year of its appearance. Unlike the seasonal flu, H1N1, commonly referred to as "swine flu," primarily sickened young people. Older individuals who had been exposed to a similar H1N1 variant earlier in their lives benefited from having immune systems primed with protective antibodies. A vaccine to this novel H1N1 virus was developed in the fall of 2009, but it was too late to be included in the seasonal flu vaccine for that year. This necessitated receiving 2 different flu vaccines for the flu season of 2009-10, especially for those considered highest at risk.
 
 To help monitor H1N1 and seasonal vaccine rates, the Centers for Disease Control (CDC), in conjunction with the National Center for Immunization and Respiratory Diseases (NCIRD) and the National Center for Health Statistics (NCHS), conducted a phone survey throughout the United States from September 2009 through June 2010. The target population was anyone living in the country who was at least 6 months old. In addition to seeing if the respondent had received the seasonal flu and/or H1N1 vaccine, the survey also gathered data on respondents' views about vaccine safety and effectiveness, precautionary measures they took to avoid getting the flu, their level of concern about becoming sick from the flu, and basic demographic information. Over 70,000 household interviews were conducted, 20% of those being child interviews. These responses comprise the National 2009 H1N1 Flu Survey (NHFS), the dataset upon which this study is based. This survey is currently part of a data science competition and can be accessed at [DrivenData](https://www.drivendata.org/competitions/66/flu-shot-learning/page/210/).
 
-Owing to the current climate of vaccine hesitancy in regards to the Covid-19 vaccination, the National Institutes of Health's Office of Communications and Public Liaison (OCPL) as well as the Office of Legislative Policy and Analysis (OLPA) are searching for ways to increase vaccination rates for the coronavirus among the American population. These organizations have contracted our company, 3 Sweaters, a data science consulting business, to study the NHFS in order to better understand why people did or did not receive the flu/H1N1 vaccine. With this information, we will provide recommendations to inform public health outreach and policy with the goal of increasing vaccination rates against Covid-19.
+Knowing that the next pandemic is a matter of "when" rather than "if," the National Institutes of Health's Office of Communications and Public Liaison (OCPL) and Office of Legislative Policy and Analysis (OLPA) are searching for ways to increase vaccination rates among the American population. These organizations have contracted our company, 3 Sweaters Consulting, a data science consulting firm, to study the NHFS in order to better understand why people did or did not receive the flu/H1N1 vaccine. Using insights gained from analyzing the NHFS, we will provide recommendations to the OCPL and OLPA regarding public health outreach and policy with the goal of increasing vaccination rates.
 
-Talk about EDA
-- more people got the seasonal flu vaccine than H1N1
-- 
+## The Dataset
+The version of the NHFS available at [DrivenData](https://www.drivendata.org/competitions/66/flu-shot-learning/page/210/) contains survey responses from 26,707 individuals. There are 2 target variables–whether or not someone received the H1N1 vaccine and whether or not someone received the seasonal influenza vaccine. This study will examine the probabilities of an individual getting these vaccines. Of the respondents, 14,272 did not receive the seasonal flu vaccine and 12,435 did. These amounts are roughly symmetrical while the number of people who did not receive the H1N1 vaccine far surpasses the number who did (21,033 to 5,674). This presents an obvious class imbalance, with those who received the H1N1 vaccine comprising about 20% of the respondents. However, this imbalance is not so great that we believe it necessitates artificially enlarging the minority group. We will, though, ensure that the train-test split contains equal proportions of this class through stratification.
 
-Talk about Data Cleaning Steps
-- Most columns filled in missing values with the median response, except for the columns that had a high (how high?) number of missing values: health insurance, employment industry, and employement occupation. Since missing values here likely indicated that the respondent was not currently in the work force (student, retired, unemployed), we transformed these missing values into an unknown category.
-- Scaling
-- Label Encoding/OHE
-- 
+The data was split into training and test sets before any data cleaning and processing occurred in order to ensure there would be no data leakage. Each of the 35 features is categorical data. Most of the columns that have missing values have fewer than 1,000 missing data points. Those we replaced with the median value of the column. A few features (health insurance, employment industry, and occupation) are missing about half their values, likely due to the respondent not being in the work force at the time of the survey (student, retired, or unemployed). We converted these missing values into a new value of "unknown".
+
+Since we are running both logistic regression and tree-based models, we'll have different preprocessing needs. To accomplish this, we set up a functions for a pipeline that will impute missing values and one-hot encode every feature for linear models; for non-linear models, the function will encode certain ordinal categories (such as education level and age group) as numerical and then min-max scale all ordinal features. We then created a function that takes in a tuned estimator as well as a choice of a preprocessor ("linear" or "tree") and returns a number of scoring metrics (recall, precision, accuracy, f1, and AUC score (if y_score is provided)). It also outputs a confusion matrix. This function saves the model and its results in a scoring dictionary.
 
 ## Modeling
 - Logistic Regression
+- Naive Bayes
 - Random Forest
 - Histogram-based gradient boosting
+- SVC
 
 ## Evaluation
 
-## Conclusions
-Recommendations:
-1. ?
-2. ?
-3. ?
+To evaluate our models, we used the precision metric. This measures how often we are predicting that people will get vaccinated when they actually did not. We believe this is the most valuable metric as we'd rather spend extra resources on those who would get vaccinated without intervention than overlook those who did not get vaccinated but we predicted they did. For predicting whether or not someone would receive the H1N1 vaccination, our best model was XXX. It had a precision score of XXX and accuracy of XXX. For predicting whether or not someone would receive the seasonal influenza vaccination, our best model was. It had a precision score of XXX and accuracy of XXX.
 
-possible ideas for next steps:
-- examine data geographically to see if different regions have different factors for getting/not getting vaccinated
-- get more recent data to see if/how vaccine attitudes have changed recently
-- focus on acquiring more data from non-white groups; this dataset is highly imbalanced toward whites (79% of respondents)
+ADD CONFUSION MATRICES HERE
+
+We calculated the permutation feature importance and found that the top 3 most influential factors in our model to predict whether someone would or would not get a vaccine, for both H1N1 and seasonal flu vaccines, were:
+- Level of concern about getting sick without a vaccine
+- Opinion on vaccine effectiveness
+- If the vaccine was recommended by a doctor
+As these partial dependence plots illustrate, each predictor has a positive relation with the criteria:
+
+ADD PARTIAL DEPENDENCE PLOTS HERE
+
+Interestingly, the top demographic variables for whether someone received the H1N1 vaccine differed from those for the seasonal flu vaccine. This is not altogether surprising since the seasonal flu vaccine has been available for over 70 years. The H1N1 vaccine was developed in response to an emergent pandemic and people were likely not very familiar with the novel pathogen or the availability of its vaccine. Since our clients are interested in vaccine acceptance in the face of a new pandemic, looking at the demographic particulars for the H1N1 vaccine may be instructive. The demographics that had the largest influence on our H1N1 model were:
+- 35-44 year olds
+- those living in poverty
+- people not married
+Each of these predictors has a **negative** relation with the criteria, meaning that these groups of people were unlikely to get the H1N1 vaccine.
+
+## Recommendations and Next Steps
+Based on the interpretations of our best models, we recommend the following to help the NIH increase vaccination rates:
+
+1.) Emphasize to medical professionals the importance of consistently recommending vaccinations for their patients
+
+2.) Conduct a public awareness campaign about the safety and effectiveness of vaccines
+
+3.) Target outreach efforts to those in the 35-44 year old age range, those living in poverty, and those who are not married
+
+To better refine these suggestions, we suggest examining the data geographically to see if different parts of the country show reveal predictors for getting or not getting vaccines. The respondent's region of the country was noted during the survey but anonymized to protect their identity. Being able to study this data through the prism of geography may reveal how to adapt outreach efforts based on region. Secondly, if feasible, we recommend supplementing this data with interviews by people who are more representative of the racial breakdown in the U.S. (this survey only has 8% black respondents and 6.5% Hispanic respondents). 
+
+We believe these suggestions with help the NIH move forward with increasing vaccine acceptance among the American population. There will be another pandemic. Having a population that is aware of the effectiveness of vaccinations and willing to receive them is one of the most powerful ways to blunt the next virus that goes viral.
+
 
 ### Repository Structure
 ```
