@@ -34,9 +34,9 @@ Since we are running both logistic regression and tree-based models, we'll have 
 - Histogram-based gradient boosting
 - SVC
 
-### Logistic Regression
+### Cleaning
 
-Our modeling strategy began with a basic logistic regression to establish a baseline. We did a train-test split, and preprocessed the data by imputing the missing values with the mode, since most categories, including the numeric ones, are categorical.  The we one-hot encoded the non-numeric columns, and scaled the numeric columns.  Since we are examing bo the seasonal and H1N1 flu strains, we are making seperate predictions for both models, and averaging the result.  Our baseline precision score was 
+Our modeling strategy began with a basic logistic regression to establish a baseline (and we additionally duplicated the competition's baseline model for reference). We performed a train-test split, and preprocessed the data by imputing the missing values with the mode, since most categories, including the numeric ones, are categorical (though for three columns where half the data was missing, we imputed this with 'unknown'). Then we one-hot encoded the non-numeric columns, and min-max scaled the numeric columns. Since we are examing both the seasonal and H1N1 flu strains, we are making seperate predictions for both models, and in some cases averaging the result. 
 
 # Before we do the models...Refactor into a pipeline
 
