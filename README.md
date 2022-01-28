@@ -27,11 +27,19 @@ The data was split into training and test sets before any data cleaning and proc
 Since we are running both logistic regression and tree-based models, we'll have different preprocessing needs. To accomplish this, we set up a functions for a pipeline that will impute missing values and one-hot encode every feature for linear models; for non-linear models, the function will encode certain ordinal categories (such as education level and age group) as numerical and then min-max scale all ordinal features. We then created a function that takes in a tuned estimator as well as a choice of a preprocessor ("linear" or "tree") and returns a number of scoring metrics (recall, precision, accuracy, f1, and AUC score (if y_score is provided)). It also outputs a confusion matrix. This function saves the model and its results in a scoring dictionary.
 
 ## Modeling
+
 - Logistic Regression
 - Naive Bayes
 - Random Forest
 - Histogram-based gradient boosting
 - SVC
+
+### Logistic Regression
+
+Our modeling strategy began with a basic logistic regression to establish a baseline. We did a train-test split, and preprocessed the data by imputing the missing values with the mode, since most categories, including the numeric ones, are categorical.  The we one-hot encoded the non-numeric columns, and scaled the numeric columns.
+
+
+
 
 ## Evaluation
 
