@@ -46,18 +46,18 @@ Now that we've got a basic and working but still fairly rough model with our cle
 
 
 ## Evaluation
+To evaluate our models, we used the precision metric. This measures how often we are predicting that people will get vaccinated when they actually did not. We believe this is the most valuable metric as we'd rather spend extra resources on those who would get vaccinated without intervention than overlook those who did not get vaccinated but we predicted they did. For predicting whether or not someone would receive the H1N1 vaccination, our best model was the tuned random forest with a precision score of 78%. This means we incorrectly predicted 22% of people as getting the vaccine who did not actually receive it. The accuracy of this model is 85%, meaning that 85% of our predictions were correct. For predicting whether or not someone would receive the seasonal influenza vaccination, our best model was the tuned Support Vector Classifier. It has a precision score of 77%, meaning that we incorrectly predicted 23% of people as getting the vaccine who did not actually receive it. The accuracy for this model is 78%.
 
-To evaluate our models, we used the precision metric. This measures how often we are predicting that people will get vaccinated when they actually did not. We believe this is the most valuable metric as we'd rather spend extra resources on those who would get vaccinated without intervention than overlook those who did not get vaccinated but we predicted they did. For predicting whether or not someone would receive the H1N1 vaccination, our best model was XXX. It had a precision score of XXX and accuracy of XXX. For predicting whether or not someone would receive the seasonal influenza vaccination, our best model was. It had a precision score of XXX and accuracy of XXX.
-
-ADD CONFUSION MATRICES HERE
+<img width="879" alt="Screen Shot 2022-01-28 at 2 10 48 PM" src="https://user-images.githubusercontent.com/93277808/151615024-c3dae1af-a35a-44a1-8632-7e80dc94d2c8.png">
 
 We calculated the permutation feature importance and found that the top 3 most influential factors in our model to predict whether someone would or would not get a vaccine, for both H1N1 and seasonal flu vaccines, were:
 - Level of concern about getting sick without a vaccine
 - Opinion on vaccine effectiveness
 - If the vaccine was recommended by a doctor
+
 As these partial dependence plots illustrate, each predictor has a positive relation with the criteria:
 
-ADD PARTIAL DEPENDENCE PLOTS HERE
+<img width="585" alt="Screen Shot 2022-01-28 at 2 15 20 PM" src="https://user-images.githubusercontent.com/93277808/151615356-fc0ab9ea-77a9-411e-a7d0-b5e28f4ff2ea.png">
 
 Interestingly, the top demographic variables for whether someone received the H1N1 vaccine differed from those for the seasonal flu vaccine. This is not altogether surprising since the seasonal flu vaccine has been available for over 70 years. The H1N1 vaccine was developed in response to an emergent pandemic and people were likely not very familiar with the novel pathogen or the availability of its vaccine. Since our clients are interested in vaccine acceptance in the face of a new pandemic, looking at the demographic particulars for the H1N1 vaccine may be instructive. The demographics that had the largest influence on our H1N1 model were:
 - 35-44 year olds
