@@ -34,17 +34,6 @@ Since we are running both logistic regression and tree-based models, we'll have 
 - Histogram-based gradient boosting
 - SVC
 
-### Cleaning
-
-Our modeling strategy began with a basic logistic regression to establish a baseline (and we additionally duplicated the competition's baseline model for reference). We performed a train-test split, and preprocessed the data by imputing the missing values with the mode, since most categories, including the numeric ones, are categorical (though for three columns where half the data was missing, we imputed this with 'unknown'). Then we one-hot encoded the non-numeric columns, and min-max scaled the numeric columns. Since we are examing both the seasonal and H1N1 flu strains, we are making seperate predictions for both models, and in some cases averaging the result. 
-
-# Before we do the models...Refactor into a pipeline
-
-Now that we've got a basic and working but still fairly rough model with our cleaning steps mostly sorted out, we'll build a pipeline. We'll also code some of our graphing and scoring steps as a function so we can easily spit out several metrics for each model.  We'll also first redo our train-test split with with stratify because the H1N1-vaccinated class is slightly imbalanced. It likely won't be a drastic improvement, but we may be able to squeeze a small amount of extra juice out of any models going forward.
-
-
-
-
 ## Evaluation
 To evaluate our models, we used the precision metric. This measures how often we are predicting that people will get vaccinated when they actually did not. We believe this is the most valuable metric as we'd rather spend extra resources on those who would get vaccinated without intervention than overlook those who did not get vaccinated but we predicted they did. For predicting whether or not someone would receive the H1N1 vaccination, our best model was the tuned random forest with a precision score of 78%. This means we incorrectly predicted 22% of people as getting the vaccine who did not actually receive it. The accuracy of this model is 85%, meaning that 85% of our predictions were correct. For predicting whether or not someone would receive the seasonal influenza vaccination, our best model was the tuned Support Vector Classifier. It has a precision score of 77%, meaning that we incorrectly predicted 23% of people as getting the vaccine who did not actually receive it. The accuracy for this model is 78%.
 
