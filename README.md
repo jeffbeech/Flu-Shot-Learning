@@ -60,6 +60,10 @@ When looking at the difference in vaccine rates between the seasonal flu and H1N
 - People 65+
 - Middle class (above poverty and below $75k)
 
+Finally, we measured the success of our models to see our overall improvement over our baselines. Seen here are our H1N1 models.
+
+![H1N1 Models](https://github.com/snakeeyes021/flu-shot-learning/raw/main/graphs/fixedH1N1_models.png)
+
 ## Recommendations and Next Steps
 Based on the interpretations of our best models, we recommend the following to help the NIH increase vaccination rates:
 
@@ -94,8 +98,17 @@ We believe these suggestions with help the NIH move forward with increasing vacc
 |   ├── training_set_labels.csv
     
 ├── graphs 
+|   ├── 151572417-975323eb-5673-4ea8-a092-2ad59a47d4a6.png
+|   ├── SSNL_models.png
 |   ├── Tuned Random Forest - H1N1.png
 |   ├── Tuned SVC - Seasonal Flu.png
+|   ├── fixedH1N1_models.png
+|   ├── image (10).png
+|   ├── image (7).png
+|   ├── image (8).png
+|   ├── image (9).png
+|   ├── partial_dependence_rf.png
+|   ├── partial_dependence_sv.png
 
 ├── personal notebooks
 |   ├── Naive Bayes.ipynb
