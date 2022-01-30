@@ -36,8 +36,8 @@ Since we are running both logistic regression and tree-based models as well as r
 To evaluate our models, we used the precision metric. This measures how often we are predicting that people will get vaccinated when they actually did not. We believe this is the most valuable metric as we'd rather spend extra resources on those who would get vaccinated without intervention than overlook those who did not get vaccinated but we predicted they did. For predicting whether or not someone would receive the H1N1 vaccination, our best model was the tuned random forest with a precision score of 81%. This means of the people we predicted as receiving the vaccine, 19% of those predictions were incorrect, and those people did not actually receive it. The accuracy of this model is 83%, meaning that 83% of our total predictions were correct. For predicting whether or not someone would receive the seasonal influenza vaccination, our best model was the tuned Support Vector Classifier. It has a precision score of 77%, meaning that 23% of our positive predictions (predictions of those who got the vaccine) were incorrect (they did not actually receive it). The accuracy for this model is 78%.
 
 <p float="left">
-  <img src="https://github.com/snakeeyes021/flu-shot-learning/raw/main/graphs/Tuned%20Random%20Forest%20-%20H1N1.png" width="450" />
-  <img src="https://github.com/snakeeyes021/flu-shot-learning/raw/main/graphs/Tuned%20SVC%20-%20Seasonal%20Flu.png" width="450" /> 
+  <img src="https://github.com/snakeeyes021/flu-shot-learning/raw/main/graphs/Tuned%20Random%20Forest%20-%20H1N1.png" width="400" />
+  <img src="https://github.com/snakeeyes021/flu-shot-learning/raw/main/graphs/Tuned%20SVC%20-%20Seasonal%20Flu.png" width="400" /> 
 </p>
 
 
