@@ -48,7 +48,7 @@ We calculated the permutation feature importance for each of our best models to 
 
 Our H1N1 vaccine model also had health insurance as a top feature in permutation importance (#2) and the seasonal flu vaccine model included age 65+ in its top variables (#3).
 
-We ran partial dependence plots on the top three variables for each model to see the relative strengths of each feature with respect to the model's predictive power. See the relevant section in the notebook for a full explanation of this data.
+We ran partial dependence plots on the top three variables for each model to see the relative strengths of each value of each feature with respect to the model's predictive power. See the relevant section in the notebook for a full explanation of this data.
 
 ![partial_dependence_rf](https://user-images.githubusercontent.com/26641674/151712822-354b5387-6ae4-4acb-9ba6-d3362340a00b.png)
 
