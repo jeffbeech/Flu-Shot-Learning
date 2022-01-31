@@ -37,7 +37,7 @@ To evaluate our models, we used the precision metric. This measures how often we
 
 <p float="left">
   <img src="https://github.com/snakeeyes021/flu-shot-learning/raw/main/graphs/Tuned%20Random%20Forest%20-%20H1N1.png" width="400" />
-  <img src="https://github.com/snakeeyes021/flu-shot-learning/raw/main/graphs/Tuned%20SVC%20-%20Seasonal%20Flu.png" width="400" /> 
+  <img src="https://github.com/snakeeyes021/flu-shot-learning/raw/main/graphs/Tuned%20SVC%20-%20Seasonal%20Flu%20-%20updated.png" width="400" /> 
 </p>
 
 
@@ -101,7 +101,7 @@ We believe these suggestions with help the NIH move forward with increasing vacc
 |   ├── 151572417-975323eb-5673-4ea8-a092-2ad59a47d4a6.png
 |   ├── SSNL_models.png
 |   ├── Tuned Random Forest - H1N1.png
-|   ├── Tuned SVC - Seasonal Flu.png
+|   ├── Tuned SVC - Seasonal Flu - updated.png
 |   ├── fixedH1N1_models.png
 |   ├── image (10).png
 |   ├── image (7).png
